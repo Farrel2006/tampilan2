@@ -8,20 +8,25 @@ st.set_page_config(
     page_icon="📊",
     layout="wide"
 )
-
 # =====================================
-# CSS STYLE: CLEAN ACADEMIC PRESENTATION
+# CSS STYLE: CLEAN ACADEMIC PRESENTATION (FIXED COMPATIBILITY)
 # =====================================
 st.markdown("""
 <style>
 /* Reset dasar ke gaya dokumen/slide formal */
 html, body, [class*="css"] {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #1e293b !important;
 }
 
 .stApp {
-    background-color: #f8fafc; /* Abu-abu sangat terang khas background slide */
+    background-color: #f8fafc !important; /* Abu-abu sangat terang khas background slide */
+}
+
+/* Memperbaiki semua teks default Streamlit Markdown agar kontras dan tajam */
+[data-testid="stMarkdownContainer"] p, [data-testid="stMarkdownContainer"] li {
+    color: #334155 !important; /* Abu-abu gelap profesional, bukan samar-samar */
+    font-size: 16px !important;
+    line-height: 1.7 !important;
 }
 
 /* Gaya Judul Utama Slide */
@@ -29,7 +34,7 @@ html, body, [class*="css"] {
     text-align: center;
     font-size: 44px;
     font-weight: 800;
-    color: #1e3a8a; /* Biru Royal Formal */
+    color: #1e3a8a !important; /* Biru Royal Formal */
     margin-top: 20px;
     margin-bottom: 5px;
     letter-spacing: -0.5px;
@@ -37,31 +42,39 @@ html, body, [class*="css"] {
 
 .subtitle {
     text-align: center;
-    color: #64748b;
+    color: #64748b !important;
     font-size: 18px;
     margin-bottom: 40px;
     font-weight: 400;
 }
 
-/* Kotak Konten Berbentuk Kartu Presentasi */
+/* Kotak Konten Berbentuk Kartu Presentasi (Diberi border lebih tegas agar kelihatan) */
 .intro-box {
-    background: #ffffff;
+    background-color: #ffffff !important;
     padding: 35px;
     border-radius: 12px;
-    border: 1px solid #e2e8f0;
+    border: 2px solid #e2e8f0 !important; /* Dipertebal */
     margin-bottom: 30px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Memastikan judul di dalam intro-box tetap berwarna biru */
+.intro-box h3, .intro-box h4 {
+    color: #1e3a8a !important;
+    font-weight: 700 !important;
 }
 
 /* Kotak Hasil Perhitungan Akhir */
 .result {
-    background: #f1f5f9;
-    color: #0f172a;
+    background-color: #f1f5f9 !important;
     padding: 25px;
     border-radius: 10px;
-    border-left: 5px solid #2563eb; /* Aksen Biru di Sisi Kiri */
+    border-left: 5px solid #2563eb !important; 
     margin-top: 25px;
-    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+}
+
+.result h3, .result h4, .result b {
+    color: #0f172a !important;
 }
 
 /* Desain Tombol Formal & Seragam */
@@ -74,7 +87,7 @@ html, body, [class*="css"] {
     font-size: 15px !important;
     border: 1px solid #cbd5e1 !important;
     color: #334155 !important;
-    background: #ffffff !important;
+    background-color: #ffffff !important;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
     transition: all 0.2s ease !important;
 }
@@ -82,14 +95,13 @@ html, body, [class*="css"] {
 /* Efek Hover Tombol Utama (Biru Presentasi) */
 .stButton>button:hover, div[data-testid="stButton"]>button:hover {
     color: #ffffff !important;
-    background: #2563eb !important;
+    background-color: #2563eb !important;
     border-color: #2563eb !important;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2) !important;
 }
 
 /* Input Form Bergaya Akademis */
-.stNumberInput input, .stTextInput input, .stSelectbox [data-testid="stMarkdownContainer"] {
+.stNumberInput input, .stTextInput input {
     background-color: #ffffff !important;
     color: #1e293b !important;
     border-radius: 8px !important;
@@ -97,8 +109,8 @@ html, body, [class*="css"] {
 }
 
 [data-testid="stWidgetLabel"] p {
-    color: #334155 !important;
-    font-weight: 600 !important;
+    color: #1e3a8a !important; /* Label input jadi biru tua */
+    font-weight: 700 !important;
     font-size: 15px !important;
 }
 
@@ -115,7 +127,7 @@ html, body, [class*="css"] {
 }
 
 .stAlert p { color: #1e40af !important; font-weight: 500; }
-h1, h2, h3, h4 { color: #1e3a8a; font-weight: 700; }
+h1, h2, h3, h4 { color: #1e3a8a !important; font-weight: 700; }
 </style>
 """, unsafe_allow_html=True)
 
