@@ -9,7 +9,7 @@ st.set_page_config(
     layout="wide"
 )
 # =====================================
-# CSS STYLE: CLEAN ACADEMIC PRESENTATION (FIXED COMPATIBILITY)
+# CSS STYLE: CLEAN ACADEMIC PRESENTATION (GRID TIGHT FIX)
 # =====================================
 st.markdown("""
 <style>
@@ -19,12 +19,12 @@ html, body, [class*="css"] {
 }
 
 .stApp {
-    background-color: #f8fafc !important; /* Abu-abu sangat terang khas background slide */
+    background-color: #f8fafc !important; 
 }
 
 /* Memperbaiki semua teks default Streamlit Markdown agar kontras dan tajam */
 [data-testid="stMarkdownContainer"] p, [data-testid="stMarkdownContainer"] li {
-    color: #334155 !important; /* Abu-abu gelap profesional, bukan samar-samar */
+    color: #334155 !important; 
     font-size: 16px !important;
     line-height: 1.7 !important;
 }
@@ -34,7 +34,7 @@ html, body, [class*="css"] {
     text-align: center;
     font-size: 44px;
     font-weight: 800;
-    color: #1e3a8a !important; /* Biru Royal Formal */
+    color: #1e3a8a !important; 
     margin-top: 20px;
     margin-bottom: 5px;
     letter-spacing: -0.5px;
@@ -48,17 +48,16 @@ html, body, [class*="css"] {
     font-weight: 400;
 }
 
-/* Kotak Konten Berbentuk Kartu Presentasi (Diberi border lebih tegas agar kelihatan) */
+/* Kotak Konten Berbentuk Kartu Presentasi */
 .intro-box {
     background-color: #ffffff !important;
     padding: 35px;
     border-radius: 12px;
-    border: 2px solid #e2e8f0 !important; /* Dipertebal */
+    border: 2px solid #e2e8f0 !important; 
     margin-bottom: 30px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Memastikan judul di dalam intro-box tetap berwarna biru */
 .intro-box h3, .intro-box h4 {
     color: #1e3a8a !important;
     font-weight: 700 !important;
@@ -77,27 +76,30 @@ html, body, [class*="css"] {
     color: #0f172a !important;
 }
 
-/* Desain Tombol Formal & Seragam */
-.stButton>button, div[data-testid="stButton"]>button {
-    width: 100% !important;
-    display: block !important;
-    padding: 12px 20px !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    font-size: 15px !important;
-    border: 1px solid #cbd5e1 !important;
-    color: #334155 !important;
-    background-color: #ffffff !important;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
-    transition: all 0.2s ease !important;
+/* PERBAIKAN TOMBOL: Menggunakan flex bawaan container tanpa merusak kolom */
+div[data-testid="stButton"] {
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-/* Efek Hover Tombol Utama (Biru Presentasi) */
-.stButton>button:hover, div[data-testid="stButton"]>button:hover {
-    color: #ffffff !important;
+div[data-testid="stButton"] button {
+    background-color: #ffffff !important;
+    color: #334155 !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 14px 20px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    width: 100% !important; /* Mengisi penuh masing-masing kolom dengan aman */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* Efek Hover Tombol */
+div[data-testid="stButton"] button:hover {
     background-color: #2563eb !important;
+    color: #ffffff !important;
     border-color: #2563eb !important;
-    transform: translateY(-1px);
 }
 
 /* Input Form Bergaya Akademis */
@@ -109,12 +111,12 @@ html, body, [class*="css"] {
 }
 
 [data-testid="stWidgetLabel"] p {
-    color: #1e3a8a !important; /* Label input jadi biru tua */
+    color: #1e3a8a !important;
     font-weight: 700 !important;
     font-size: 15px !important;
 }
 
-/* Warna Math/LaTeX disesuaikan agar kontras di latar terang */
+/* Warna Math/LaTeX */
 .katex {
     color: #1e3a8a !important;
     font-size: 22px !important;
@@ -130,7 +132,6 @@ html, body, [class*="css"] {
 h1, h2, h3, h4 { color: #1e3a8a !important; font-weight: 700; }
 </style>
 """, unsafe_allow_html=True)
-
 # =====================================
 # UTILITIES
 # =====================================
