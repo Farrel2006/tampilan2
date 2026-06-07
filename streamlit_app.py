@@ -403,6 +403,14 @@ elif st.session_state.current_page == "calc_page":
         target = st.selectbox("Pilih variabel yang ingin dicari:",
                               ["ΔU (Perubahan Energi Dalam)", "Q (Kalor)", "W (Usaha)"])
 
+        # Tambahan Pengertian Dinamis
+        if "ΔU" in target:
+            st.info("💡 **Perubahan Energi Dalam (ΔU):** Jumlah total energi kinetik dan potensial yang dimiliki oleh partikel-partikel di dalam sistem. Dipengaruhi oleh kalor yang diserap/dilepas dan usaha yang dilakukan/diterima.")
+        elif "Q" in target:
+            st.info("💡 **Kalor (Q):** Energi panas yang berpindah antara sistem dan lingkungan karena adanya perbedaan suhu. Nilai (+) jika sistem menyerap kalor, (-) jika sistem melepas kalor.")
+        else:
+            st.info("💡 **Usaha (W):** Energi yang dipindahkan melalui gaya mekanis ketika sistem mengalami perubahan volume. Nilai (+) jika sistem melakukan usaha (ekspansi), (-) jika sistem menerima usaha (kompresi).")
+
         Q = st.number_input("Q (kJ)", value=0.0) if target != "Q (Kalor)" else 0.0
         W = st.number_input("W (kJ)", value=0.0) if target != "W (Usaha)" else 0.0
         dU = st.number_input("ΔU (kJ)", value=0.0) if target != "ΔU (Perubahan Energi Dalam)" else 0.0
@@ -426,6 +434,14 @@ elif st.session_state.current_page == "calc_page":
         target = st.selectbox("Pilih variabel yang ingin dicari:",
                               ["W (Usaha)", "P (Tekanan)", "ΔV (Perubahan Volume)"])
 
+        # Tambahan Pengertian Dinamis
+        if "W" in target:
+            st.info("💡 **Usaha Mekanis (W):** Kerja yang dilakukan oleh gas saat memuai (ekspansi) atau dilakukan pada gas saat menyusut (kompresi) di bawah tekanan tertentu.")
+        elif "P" in target:
+            st.info("💡 **Tekanan (P):** Gaya tegak lurus yang diberikan oleh molekul gas per satuan luas dinding wadah sistem.")
+        else:
+            st.info("💡 **Perubahan Volume (ΔV):** Selisih antara volume akhir ($V_2$) dan volume awal ($V_1$) sistem gas ($\\Delta V = V_2 - V_1$).")
+
         W = st.number_input("W (J)", value=0.0) if target != "W (Usaha)" else 0.0
         P = st.number_input("P (Pa)", value=0.0) if target != "P (Tekanan)" else 0.0
         dV = st.number_input("ΔV (m³)", value=0.0) if target != "ΔV (Perubahan Volume)" else 0.0
@@ -448,6 +464,16 @@ elif st.session_state.current_page == "calc_page":
         st.latex(r"Q = m \cdot c \cdot \Delta T")
         target = st.selectbox("Pilih variabel yang ingin dicari:",
                               ["Q (Kalor)", "m (Massa)", "c (Kalor Jenis)", "ΔT (Perubahan Suhu)"])
+
+        # Tambahan Pengertian Dinamis
+        if "Q" in target:
+            st.info("💡 **Kalor (Q):** Energi panas total yang diserap atau dilepaskan oleh suatu benda bermassa untuk mengubah suhunya.")
+        elif "m" in target:
+            st.info("💡 **Massa (m):** Kuantitas materi dalam zat atau objek yang sedang dipanaskan atau didinginkan.")
+        elif "c" in target:
+            st.info("💡 **Kalor Jenis (c):** Banyaknya kalor yang diperlukan oleh 1 gram zat untuk menaikkan suhunya sebesar 1°C atau 1 K. Ini menunjukkan karakteristik termal zat tersebut.")
+        else:
+            st.info("💡 **Perubahan Suhu (ΔT):** Selisih antara suhu akhir ($T_{akhir}$) dan suhu awal ($T_{awal}$) dari zat.")
 
         Q = st.number_input("Q (J)", value=0.0) if target != "Q (Kalor)" else 0.0
         m = st.number_input("m (g)", value=0.0) if target != "m (Massa)" else 0.0
@@ -477,6 +503,16 @@ elif st.session_state.current_page == "calc_page":
                               ["ΔH (Entalpi)", "ΔU (Energi Dalam)", "Δn (Perubahan Mol)", "T (Suhu)"])
         R = 0.008314
 
+        # Tambahan Pengertian Dinamis
+        if "ΔH" in target:
+            st.info("💡 **Perubahan Entalpi (ΔH):** Jumlah energi atau kalor total yang dilepas atau diserap sistem pada kondisi tekanan konstan.")
+        elif "ΔU" in target:
+            st.info("💡 **Perubahan Energi Dalam (ΔU):** Komponen energi internal sistem (energi kinetik + potensial partikel) di luar kerja ekspansi volume.")
+        elif "Δn" in target:
+            st.info("💡 **Perubahan Jumlah Mol Gas (Δn):** Selisih jumlah mol produk berwujud gas dengan jumlah mol reaktan berwujud gas ($\\Delta n = n_{produk} - n_{reaktan}$).")
+        else:
+            st.info("💡 **Suhu Mutlak (T):** Suhu operasi sistem termodinamika yang wajib dinyatakan dalam satuan Kelvin (K).")
+
         dH = st.number_input("ΔH (kJ)", value=0.0) if target != "ΔH (Entalpi)" else 0.0
         dU = st.number_input("ΔU (kJ)", value=0.0) if target != "ΔU (Energi Dalam)" else 0.0
         dn = st.number_input("Δn (mol)", value=0.0) if target != "Δn (Perubahan Mol)" else 0.0
@@ -503,6 +539,12 @@ elif st.session_state.current_page == "calc_page":
         st.latex(r"\Delta H_{total} = \Delta H_1 + \Delta H_2 + ... + \Delta H_n")
         target = st.selectbox("Pilih operasi:", ["Hitung ΔH Total dari list", "Cari satu ΔH yang hilang"])
 
+        # Tambahan Pengertian Dinamis
+        if "Total" in target:
+            st.info("💡 **Hukum Hess:** Menyatakan bahwa perubahan entalpi total dari suatu reaksi kimia bernilai sama, baik reaksi itu berlangsung dalam satu tahap maupun beberapa tahap (tidak bergantung pada jalannya reaksi, hanya kondisi awal dan akhir).")
+        else:
+            st.info("💡 **Mencari Komponen ΔH:** Jika total entalpi rute langsung diketahui, kita bisa mencari nilai entalpi salah satu sub-reaksi yang hilang dengan prinsip hukum penjumlahan.")
+
         if target == "Hitung ΔH Total dari list":
             data = st.text_input("Masukkan semua nilai ΔH (pisahkan dengan koma)", "10,-20,30")
             if st.button("Hitung"):
@@ -525,6 +567,14 @@ elif st.session_state.current_page == "calc_page":
     elif menu == "ΔH Reaksi":
         st.latex(r"\Delta H = \sum Hf_{produk} - \sum Hf_{reaktan}")
         target = st.selectbox("Pilih variabel yang ingin dicari:", ["ΔH Reaksi", "ΣHf Produk", "ΣHf Reaktan"])
+
+        # Tambahan Pengertian Dinamis
+        if "ΔH Reaksi" in target:
+            st.info("💡 **ΔH Reaksi:** Kalor netto reaksi yang dihitung dari total entalpi pembentukan standar ($H_f^\\circ$) zat-zat produk dikurangi zat-zat reaktan.")
+        elif "Produk" in target:
+            st.info("💡 **ΣHf Produk:** Total energi entalpi pembentukan standar milik seluruh senyawa baru hasil akhir reaksi (sisi kanan panah).")
+        else:
+            st.info("💡 **ΣHf Reaktan:** Total energi entalpi pembentukan standar milik seluruh senyawa awal / pereaksi (sisi kiri panah).")
 
         dH = st.number_input("ΔH Reaksi (kJ)", value=0.0) if target != "ΔH Reaksi" else 0.0
         prod = st.text_input("Masukkan nilai Produk (pisah koma)", "0") if target != "ΣHf Produk" else "0"
@@ -552,6 +602,16 @@ elif st.session_state.current_page == "calc_page":
         target = st.selectbox("Pilih variabel yang ingin dicari:",
                               ["ΔG (Energi Gibbs)", "ΔH (Entalpi)", "T (Suhu dalam K)", "ΔS (Entropi dalam kJ/K)"])
 
+        # Tambahan Pengertian Dinamis
+        if "ΔG" in target:
+            st.info("💡 **Energi Bebas Gibbs (ΔG):** Parameter potensial termodinamika untuk memprediksi kespontanan reaksi. Reaksi berjalan spontan jika $\\Delta G < 0$, tidak spontan jika $\\Delta G > 0$, dan setimbang jika $\\Delta G = 0$.")
+        elif "ΔH" in target:
+            st.info("💡 **Entalpi (ΔH):** Kuantitas energi panas internal total pada sistem.")
+        elif "T" in target:
+            st.info("💡 **Suhu (T):** Faktor pengali termal derajat ketidakteraturan (Kelvin).")
+        else:
+            st.info("💡 **Perubahan Entropi (ΔS):** Ukuran derajat ketidakteraturan atau keacakan partikel dalam sistem.")
+
         dG = st.number_input("ΔG (kJ)", value=0.0) if target != "ΔG (Energi Gibbs)" else 0.0
         dH = st.number_input("ΔH (kJ)", value=0.0) if target != "ΔH (Entalpi)" else 0.0
         T = st.number_input("T (K)", value=0.0) if target != "T (Suhu dalam K)" else 0.0
@@ -578,6 +638,14 @@ elif st.session_state.current_page == "calc_page":
         st.latex(r"\Delta S = \frac{Q}{T}")
         target = st.selectbox("Pilih variabel yang ingin dicari:", ["ΔS (Entropi)", "Q (Kalor)", "T (Suhu)"])
 
+        # Tambahan Pengertian Dinamis
+        if "ΔS" in target:
+            st.info("💡 **Perubahan Entropi (ΔS):** Rasio perpindahan kalor reversibel sistem terhadap suhu mutlaknya, mendefinisikan tingkat penyebaran energi atau ketidakteraturan molekul.")
+        elif "Q" in target:
+            st.info("💡 **Kalor Reversibel (Q):** Energi termal yang ditransfer masuk/keluar sistem secara perlahan sehingga sistem selalu berada pada kesetimbangan konstan.")
+        else:
+            st.info("💡 **Suhu Mutlak (T):** Titik temperatur konstan (Kelvin) lingkungan tempat pertukaran energi entropi berlangsung.")
+
         dS = st.number_input("ΔS (kJ/K)", value=0.0) if target != "ΔS (Entropi)" else 0.0
         Q = st.number_input("Q (kJ)", value=0.0) if target != "Q (Kalor)" else 0.0
         T = st.number_input("T (K)", value=0.0) if target != "T (Suhu)" else 0.0
@@ -601,6 +669,16 @@ elif st.session_state.current_page == "calc_page":
         target = st.selectbox("Pilih variabel yang ingin dicari:",
                               ["P (Tekanan)", "V (Volume)", "n (Jumlah Mol)", "T (Suhu)"])
         R = 0.0821
+
+        # Tambahan Pengertian Dinamis
+        if "P" in target:
+            st.info("💡 **Tekanan Gas Ideal (P):** Gaya makroskopis tumbukan partikel gas teoritis pada dinding wadah yang kerapatan volumenya diabaikan dan interaksi antarpartikelnya nol.")
+        elif "V" in target:
+            st.info("💡 **Volume Gas (V):** Ruang geometris wadah penampung gas ideal (satuan liter).")
+        elif "n" in target:
+            st.info("💡 **Jumlah Mol (n):** Ukuran kuantitas zat yang menyatakan jumlah partikel gas dalam satuan mol.")
+        else:
+            st.info("💡 **Suhu Mutlak (T):** Derajat panas kinetik partikel dalam derajat Kelvin ($K = ^\\circ C + 273$).")
 
         P = st.number_input("P (atm)", value=0.0) if target != "P (Tekanan)" else 0.0
         V = st.number_input("V (L)", value=0.0) if target != "V (Volume)" else 0.0
@@ -629,6 +707,12 @@ elif st.session_state.current_page == "calc_page":
         target = st.selectbox("Pilih variabel yang ingin dicari:", ["P (Tekanan)", "T (Suhu)"])
         R = 0.0821
 
+        # Tambahan Pengertian Dinamis
+        if "P" in target:
+            st.info("💡 **Tekanan Gas Nyata (Persamaan Van der Waals):** Menghitung koreksi tekanan akibat adanya gaya tarik-menarik antar-molekul gas ($a$) dan volume eksklusi efektif partikel gas nyata itu sendiri ($b$).")
+        else:
+            st.info("💡 **Suhu Gas Nyata:** Suhu sistem non-ideal yang dipengaruhi oleh koreksi kerapatan internal dan volume aktual molekuler.")
+
         n = st.number_input("n (mol)", value=0.0)
         V = st.number_input("V (L)", value=0.0)
         a = st.number_input("a (atm.L²/mol²)", value=0.0)
@@ -652,6 +736,15 @@ elif st.session_state.current_page == "calc_page":
     # 11. PROSES ISOBARIK
     elif menu == "Proses Isobarik":
         st.latex(r"W = P \cdot (V_2 - V_1), \quad Q = n \cdot C_p \cdot \Delta T")
+        
+        target_isobarik = st.selectbox("Pilih komponen yang ingin dipelajari/dihitung:", 
+                                       ["Usaha Mekanis (W)", "Kalor Isobarik (Q)"])
+        
+        if "Usaha" in target_isobarik:
+            st.info("💡 **Usaha Isobarik (W):** Kerja mekanis yang dilakukan oleh gas atau pada gas ketika sistem memuai/menyusut pada tekanan konstan (tetap).")
+        else:
+            st.info("💡 **Kalor Isobarik (Q):** Energi panas yang diserap atau dilepas sistem pada tekanan konstan, di mana nilai kapasitas kalornya menggunakan $C_p$.")
+
         P = st.number_input("P (Pa atau atm)", value=0.0)
         V1 = st.number_input("V1 (m³ atau L)", value=0.0)
         V2 = st.number_input("V2 (m³ atau L)", value=0.0)
@@ -664,7 +757,9 @@ elif st.session_state.current_page == "calc_page":
     # 12. PROSES ISOKHORIK
     elif menu == "Proses Isokhorik":
         st.latex(r"W = 0, \quad \Delta U = Q = n \cdot C_v \cdot \Delta T")
-        st.info("Pada volume konstan (Isokhorik), sistem tidak melakukan usaha mekanis luar.")
+        
+        st.info("💡 **Proses Isokhorik (Volume Konstan):** Karena wadah sistem kaku dan tidak mengalami perubahan volume ($\Delta V = 0$), maka sistem **tidak melakukan atau menerima usaha mekanis luar** ($W = 0$). Semua kalor yang masuk langsung diubah menjadi energi dalam ($Q = \Delta U$).")
+        
         n = st.number_input("n (mol)", value=0.0)
         Cv = st.number_input("Cv (J/mol.K)", value=0.0)
         dT = st.number_input("ΔT (K)", value=0.0)
@@ -677,6 +772,9 @@ elif st.session_state.current_page == "calc_page":
     # 13. PROSES ISOTERMAL
     elif menu == "Proses Isotermal":
         st.latex(r"W = Q = n \cdot R \cdot T \cdot \ln\left(\frac{V_2}{V_1}\right)")
+        
+        st.info("💡 **Proses Isotermal (Suhu Konstan):** Proses termodinamika yang menjaga suhu sistem agar selalu tetap ($\Delta T = 0$). Karena suhu konstan, perubahan energi dalamnya nol ($\Delta U = 0$), sehingga seluruh kalor yang diserap sistem diubah seutuhnya menjadi usaha mekanis ($Q = W$).")
+        
         R = 8.314
         n = st.number_input("n (mol)", value=0.0)
         T = st.number_input("T (K)", value=0.0)
@@ -695,7 +793,6 @@ elif st.session_state.current_page == "calc_page":
 
     # 14. EDUKASI ISOTOP GAS
     elif menu == "Edukasi Isotop Gas":
-        # Bagian teks dipisah dengan st.latex agar rumusnya merender sempurna
         st.markdown("""
         ### 🧪 Efek Isotop pada Sifat Termodinamika Gas
         Penggantian unsur dengan isotopnya yang lebih berat (misal $H_2 \\rightarrow D_2$) akan mengubah sifat fisis makro zat tanpa mengganggu struktur konfigurasi elektron luarnya.
@@ -704,7 +801,6 @@ elif st.session_state.current_page == "calc_page":
         1. **Kecepatan Efektif ($v_{rms}$):** Berbanding terbalik dengan akar massa molar ($M$). Partikel isotop berat bergerak lebih lambat pada kesetimbangan termal yang sama.
         """)
 
-        # Menggunakan st.latex agar rumus pecahan dan akar tampil sempurna
         st.latex(r"v_{rms} = \sqrt{\frac{3RT}{M}}")
 
         st.markdown("""
@@ -713,10 +809,19 @@ elif st.session_state.current_page == "calc_page":
 
         st.write("")
         st.subheader("📊 Komputasi Nilai Efektif ($v_{rms}$) antar Isotop")
+        
         pilihan_gas = st.selectbox(
             "Pilih Kelompok Gas / Isotop:",
             ["Hidrogen (H₂ vs D₂)", "Uranium Heksafluorida (²³⁵UF₆ vs ²³⁸UF₆)", "Uap Air (H₂O vs D₂O)"]
         )
+        
+        if "Hidrogen" in pilihan_gas:
+            st.info("💡 **Isotop Hidrogen:** Mengganti Hidrogen ($H_2$) menjadi Deuterium ($D_2$) melipatgandakan massa molar zat, yang secara drastis menurunkan kecepatan rata-rata kinetik molekul gas pada suhu kamar.")
+        elif "Uranium" in pilihan_gas:
+            st.info("💡 **Isotop Uranium:** Perbedaan massa antara $^{235}UF_6$ dan $^{238}UF_6$ sangat kecil. Fraksionasi kinetik yang tipis inilah yang mendasari metode pemisahan membran/sentrifugasi gas pada pengayaan uranium nuklir.")
+        else:
+            st.info("💡 **Isotop Uap Air:** Uap air berat ($D_2O$) memiliki interaksi energi ikatan antar-molekul yang sedikit berbeda dari uap air biasa ($H_2O$), memengaruhi tekanan uap jenuh dan entalpi penguapannya.")
+
         T_isotop = st.number_input("Suhu Sistem (K)", value=300.0, min_value=0.1)
 
         if pilihan_gas == "Hidrogen (H₂ vs D₂)":
