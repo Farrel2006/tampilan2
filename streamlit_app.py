@@ -1,4 +1,3 @@
-T
 import streamlit as st
 # CONFIG
 st.set_page_config(
