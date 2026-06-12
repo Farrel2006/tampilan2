@@ -258,30 +258,48 @@ elif st.session_state.current_page == "slide2":
         text-shadow: 0 0 18px rgba(147,197,253,0.7);
     }
 
-    /* Container kategori dibuat seragam */
+    /* Container kategori dibuat lebih terang, seragam, dan tetap futuristik */
     .st-key-card_energi,
     .st-key-card_termo,
     .st-key-card_gas,
     .st-key-card_proses {
-        background: rgba(255,255,255,0.08);
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(167,139,250,0.35);
+        background: linear-gradient(
+            135deg,
+            rgba(129, 140, 248, 0.25),
+            rgba(168, 85, 247, 0.28)
+        );
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(196, 181, 253, 0.38);
         border-radius: 24px;
         padding: 24px;
         min-height: 280px;
-        box-shadow: 0 0 25px rgba(124,58,237,0.25);
+        box-shadow:
+            0 8px 32px rgba(124,58,237,0.25),
+            0 0 18px rgba(139,92,246,0.20);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        transition: all 0.3s ease;
     }
 
     .st-key-card_energi:hover,
     .st-key-card_termo:hover,
     .st-key-card_gas:hover,
     .st-key-card_proses:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 0 35px rgba(124,58,237,0.40);
-        transition: all 0.3s ease;
+        transform: translateY(-5px);
+        box-shadow:
+            0 12px 40px rgba(124,58,237,0.35),
+            0 0 28px rgba(168,85,247,0.30);
+    }
+
+    .card-title {
+        text-align: center;
+        color: #f8fafc !important;
+        font-size: 26px;
+        font-weight: 800;
+        margin-bottom: 18px;
+        text-shadow: 0 0 12px rgba(216,180,254,0.55);
     }
     </style>
     """, unsafe_allow_html=True)
@@ -296,7 +314,7 @@ elif st.session_state.current_page == "slide2":
 
     with col1:
         with st.container(key="card_energi"):
-            st.subheader("⚡ Energetika Dasar")
+            st.markdown("<div class='card-title'>⚡ Energetika Dasar</div>", unsafe_allow_html=True)
 
             c1, c2 = st.columns(2)
             with c1:
@@ -324,7 +342,7 @@ elif st.session_state.current_page == "slide2":
         st.write("")
 
         with st.container(key="card_gas"):
-            st.subheader("🧬 Fisika Gas")
+            st.markdown("<div class='card-title'>🧬 Fisika Gas</div>", unsafe_allow_html=True)
 
             c1, c2 = st.columns(2)
             with c1:
@@ -341,7 +359,7 @@ elif st.session_state.current_page == "slide2":
 
     with col2:
         with st.container(key="card_termo"):
-            st.subheader("🧪 Termokimia")
+            st.markdown("<div class='card-title'>🧪 Termokimia</div>", unsafe_allow_html=True)
 
             c1, c2 = st.columns(2)
             with c1:
@@ -369,7 +387,7 @@ elif st.session_state.current_page == "slide2":
         st.write("")
 
         with st.container(key="card_proses"):
-            st.subheader("⚙️ Proses Termodinamika")
+            st.markdown("<div class='card-title'>⚙️ Proses Termodinamika</div>", unsafe_allow_html=True)
 
             c1, c2 = st.columns(2)
             with c1:
