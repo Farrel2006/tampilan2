@@ -11,20 +11,20 @@ st.markdown("""
 html, body, [class*="css"] {
     font-family: 'Poppins', sans-serif;
 }
- 
+
 .stApp {
     background: linear-gradient(-45deg, #020617, #1e1b4b, #0f172a, #581c87, #3b0764);
     background-size: 500% 500%;
     animation: gradientBG 18s ease infinite;
     color:white;
 }
- 
+
 @keyframes gradientBG {
     0% {background-position:0% 50%;}
     50% {background-position:100% 50%;}
     100% {background-position:0% 50%;}
 }
- 
+
 .title {
     text-align:center;
     font-size:68px;
@@ -35,20 +35,20 @@ html, body, [class*="css"] {
     text-shadow:0 0 30px rgba(59,130,246,.8);
     animation: floatTitle 3s ease-in-out infinite;
 }
- 
+
 @keyframes floatTitle {
     0% {transform:translateY(0px);}
     50% {transform:translateY(-8px);}
     100% {transform:translateY(0px);}
 }
- 
+
 .subtitle {
     text-align:center;
     color:#cbd5e1;
     font-size:18px;
     margin-bottom:35px;
 }
- 
+
 .intro-box {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
@@ -58,7 +58,7 @@ html, body, [class*="css"] {
     margin-bottom: 40px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
- 
+
 .result {
     background: rgba(255,255,255,0.12);
     backdrop-filter: blur(18px);
@@ -70,12 +70,12 @@ html, body, [class*="css"] {
     animation: fadeIn 0.7s ease;
     margin-top:20px;
 }
- 
+
 @keyframes fadeIn {
     from { opacity:0; transform:translateY(20px); }
     to { opacity:1; transform:translateY(0); }
 }
- 
+
 /* Memaksa semua jenis tombol berukuran lebar penuh yang seragam */
 .stButton>button, div[data-testid="stButton"]>button {
     width: 100% !important;
@@ -90,39 +90,39 @@ html, body, [class*="css"] {
     box-shadow:0 0 18px rgba(124, 58, 237, 0.55) !important;
     transition:all .3s ease !important;
 }
- 
+
 .stButton>button:hover, div[data-testid="stButton"]>button:hover {
     transform:translateY(-4px) scale(1.02) !important;
     background: #8b5cf6 !important;
     box-shadow:0 0 25px rgba(124,58,237,0.85) !important;
 }
- 
+
 .stNumberInput input, .stTextInput input {
     background-color: rgba(255, 255, 255, 0.9) !important;
     color: #000000 !important;
     border-radius:15px !important;
     font-weight: 600 !important;
 }
- 
+
 [data-testid="stWidgetLabel"] p {
     color: #ffffff !important;
     font-weight: 700 !important;
     font-size: 16px !important;
     text-shadow: 0 0 8px rgba(255,255,255,0.4);
 }
- 
+
 .katex {
     color:#f5d0fe !important;
     font-size:24px !important;
 }
- 
+
 .stAlert {
     border-radius:18px;
     background: rgba(255,255,255,0.08) !important;
     border: 1px solid rgba(216,180,254,0.25) !important;
     backdrop-filter: blur(10px);
 }
- 
+
 .stAlert p { color: #f5d0fe !important; font-weight: 500; }
 .stAlert svg { fill: #d8b4fe !important; }
 h1,h2,h3 { color:#f5d0fe; } 
@@ -134,21 +134,21 @@ h1,h2,h3 { color:#f5d0fe; }
 }
 </style>
 """, unsafe_allow_html=True)
- 
- 
+
+
 # UTILITIES
 def fmt(angka):
     try:
         return f"{angka:g}"
     except:
         return str(angka)
- 
+
 # SESSION STATE NAVIGATION
 if "current_page" not in st.session_state:
     st.session_state.current_page = "slide1"
 if "menu" not in st.session_state:
     st.session_state.menu = None
- 
+
 menu_list = [
     "Hukum 1 Termodinamika", "Usaha", "Kalor", "Entalpi", "Hukum Hess",
     "ΔH Reaksi", "Energi Gibbs", "Entropi", "Gas Ideal", "Gas Nyata",
@@ -156,9 +156,9 @@ menu_list = [
 ]
 # SLIDE 1: JUDUL, SAMBUTAN & TUJUAN
 if st.session_state.current_page == "slide1":
- 
+
     st.snow()
- 
+
     # CSS KHUSUS JUDUL
     st.markdown("""
     <style>
@@ -179,14 +179,14 @@ if st.session_state.current_page == "slide1":
         -webkit-text-fill-color: transparent;
         animation: gradientFlow 6s linear infinite;
     }
- 
+
     @keyframes gradientFlow {
         from {background-position:0% center;}
         to {background-position:400% center;}
     }
     </style>
     """, unsafe_allow_html=True)
- 
+
     # JUDUL
     st.markdown("""
     <div style="text-align:center;">
@@ -195,14 +195,14 @@ if st.session_state.current_page == "slide1":
         <span style="font-size:70px;">🌡️</span>
     </div>
     """, unsafe_allow_html=True)
- 
+
     st.markdown(
         "<div class='subtitle'>Kalkulator & Modul Edukasi Termodinamika Universal</div>",
         unsafe_allow_html=True
     )
- 
+
     st.write("")
- 
+
     # BOX PENJELASAN
     with st.container(border=True):
         st.markdown("""
@@ -218,9 +218,9 @@ if st.session_state.current_page == "slide1":
         2. **Validasi Hasil Studi & Lab** : Validasi data hasil praktikum Anda secara akurat, mulai dari perhitungan entalpi reaktan/produk, kalor gas, hingga Hukum Hess.
         3. **Pahami Konsep, Bukan Cuma Hasil** : Dukung proses belajar Anda lewat fitur penurunan rumus langkah demi langkah (*step-by-step*) untuk pemahaman konseptual yang lebih mendalam.
         """)
- 
+
     st.write("")
- 
+
     # CREATOR DI BAGIAN BAWAH SLIDE 1
     st.markdown("""
     <div style="
@@ -234,9 +234,9 @@ if st.session_state.current_page == "slide1":
     👨‍💻 Creator: Diki Fadillah R | Fajri Ash Shidqi B | Farrel Admaja W | M Daffa Islami | Reva Nur Lestari
     </div>
     """, unsafe_allow_html=True)
- 
+
     _, col_btn, _ = st.columns([1,2,1])
- 
+
     with col_btn:
         if st.button(
             "🚀 Lanjut ke Pemilihan Modul",
@@ -246,7 +246,7 @@ if st.session_state.current_page == "slide1":
             st.rerun()
 # SLIDE 2: PILIHAN MODUL KALKULATOR
 elif st.session_state.current_page == "slide2":
- 
+
     st.markdown("""
     <style>
     .menu-title {
@@ -257,7 +257,7 @@ elif st.session_state.current_page == "slide2":
         text-align: center;
         text-shadow: 0 0 18px rgba(147,197,253,0.7);
     }
- 
+
     /* Judul pada setiap container dibuat rata tengah */
     .card-title {
         text-align: center;
@@ -267,7 +267,7 @@ elif st.session_state.current_page == "slide2":
         margin-bottom: 18px;
         text-shadow: 0 0 12px rgba(255,255,255,0.45);
     }
- 
+
     /* Ukuran dasar semua container dibuat sama */
     .st-key-card_energi,
     .st-key-card_termo,
@@ -283,232 +283,259 @@ elif st.session_state.current_page == "slide2":
         -webkit-backdrop-filter: blur(16px);
         transition: all 0.3s ease;
     }
- 
+
     /* Container Energetika: biru */
     .st-key-card_energi {
         background: linear-gradient(135deg, rgba(59,130,246,0.28), rgba(96,165,250,0.20));
         border: 1px solid rgba(147,197,253,0.45);
         box-shadow: 0 0 25px rgba(59,130,246,0.30);
     }
- 
+
     /* Container Termokimia: ungu */
     .st-key-card_termo {
         background: linear-gradient(135deg, rgba(168,85,247,0.28), rgba(217,70,239,0.20));
         border: 1px solid rgba(216,180,254,0.45);
         box-shadow: 0 0 25px rgba(168,85,247,0.30);
     }
- 
+
     /* Container Fisika Gas: toska */
     .st-key-card_gas {
         background: linear-gradient(135deg, rgba(20,184,166,0.28), rgba(6,182,212,0.20));
         border: 1px solid rgba(94,234,212,0.45);
         box-shadow: 0 0 25px rgba(20,184,166,0.30);
     }
- 
+
     /* Container Proses: oranye */
     .st-key-card_proses {
         background: linear-gradient(135deg, rgba(245,158,11,0.28), rgba(249,115,22,0.20));
         border: 1px solid rgba(253,186,116,0.45);
         box-shadow: 0 0 25px rgba(249,115,22,0.30);
     }
- 
+
     .st-key-card_energi:hover,
     .st-key-card_termo:hover,
     .st-key-card_gas:hover,
     .st-key-card_proses:hover {
         transform: translateY(-5px);
     }
- 
-    /* Warna button berbeda sesuai kategori container */
-    .st-key-btn_h1 button,
-    .st-key-btn_kalor button,
-    .st-key-btn_usaha button,
-    .st-key-btn_entropi button {
+
+    /* Ukuran semua button modul dibuat sama */
+    div[data-testid="stButton"] > button,
+    .stButton > button {
+        width: 100% !important;
+        min-height: 54px !important;
+        height: 54px !important;
+        padding: 12px 14px !important;
+        border-radius: 18px !important;
+        font-size: 16px !important;
+        font-weight: 800 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        line-height: 1.2 !important;
+        white-space: normal !important;
+        color: white !important;
+        border: none !important;
+        transition: all 0.3s ease !important;
+    }
+
+    /* Button Energetika: biru */
+    div[class*="st-key-btn_h1"] button,
+    div[class*="st-key-btn_kalor"] button,
+    div[class*="st-key-btn_usaha"] button,
+    div[class*="st-key-btn_entropi"] button {
         background: #2563eb !important;
-        box-shadow: 0 0 18px rgba(37,99,235,0.55) !important;
+        box-shadow: 0 0 18px rgba(37,99,235,0.60) !important;
     }
- 
-    .st-key-btn_entalpi button,
-    .st-key-btn_hess button,
-    .st-key-btn_dh_reaksi button,
-    .st-key-btn_gibbs button {
-        background: #9333ea !important;
-        box-shadow: 0 0 18px rgba(147,51,234,0.55) !important;
-    }
- 
-    .st-key-btn_ideal button,
-    .st-key-btn_nyata button {
-        background: #0d9488 !important;
-        box-shadow: 0 0 18px rgba(13,148,136,0.55) !important;
-    }
- 
-    .st-key-btn_isobarik button,
-    .st-key-btn_isokhorik button,
-    .st-key-btn_isotermal button,
-    .st-key-btn_isotop button {
-        background: #ea580c !important;
-        box-shadow: 0 0 18px rgba(234,88,12,0.55) !important;
-    }
- 
-    /* Hover button sesuai kategori */
-    .st-key-btn_h1 button:hover,
-    .st-key-btn_kalor button:hover,
-    .st-key-btn_usaha button:hover,
-    .st-key-btn_entropi button:hover {
+
+    div[class*="st-key-btn_h1"] button:hover,
+    div[class*="st-key-btn_kalor"] button:hover,
+    div[class*="st-key-btn_usaha"] button:hover,
+    div[class*="st-key-btn_entropi"] button:hover {
         background: #3b82f6 !important;
-        box-shadow: 0 0 28px rgba(59,130,246,0.85) !important;
+        box-shadow: 0 0 30px rgba(59,130,246,0.90) !important;
+        transform: translateY(-4px) scale(1.02) !important;
     }
- 
-    .st-key-btn_entalpi button:hover,
-    .st-key-btn_hess button:hover,
-    .st-key-btn_dh_reaksi button:hover,
-    .st-key-btn_gibbs button:hover {
+
+    /* Button Termokimia: violet */
+    div[class*="st-key-btn_entalpi"] button,
+    div[class*="st-key-btn_hess"] button,
+    div[class*="st-key-btn_dh_reaksi"] button,
+    div[class*="st-key-btn_gibbs"] button {
+        background: #9333ea !important;
+        box-shadow: 0 0 18px rgba(147,51,234,0.60) !important;
+    }
+
+    div[class*="st-key-btn_entalpi"] button:hover,
+    div[class*="st-key-btn_hess"] button:hover,
+    div[class*="st-key-btn_dh_reaksi"] button:hover,
+    div[class*="st-key-btn_gibbs"] button:hover {
         background: #a855f7 !important;
-        box-shadow: 0 0 28px rgba(168,85,247,0.85) !important;
+        box-shadow: 0 0 30px rgba(168,85,247,0.90) !important;
+        transform: translateY(-4px) scale(1.02) !important;
     }
- 
-    .st-key-btn_ideal button:hover,
-    .st-key-btn_nyata button:hover {
+
+    /* Button Fisika Gas: toska */
+    div[class*="st-key-btn_ideal"] button,
+    div[class*="st-key-btn_nyata"] button {
+        background: #0d9488 !important;
+        box-shadow: 0 0 18px rgba(13,148,136,0.60) !important;
+    }
+
+    div[class*="st-key-btn_ideal"] button:hover,
+    div[class*="st-key-btn_nyata"] button:hover {
         background: #14b8a6 !important;
-        box-shadow: 0 0 28px rgba(20,184,166,0.85) !important;
+        box-shadow: 0 0 30px rgba(20,184,166,0.90) !important;
+        transform: translateY(-4px) scale(1.02) !important;
     }
- 
-    .st-key-btn_isobarik button:hover,
-    .st-key-btn_isokhorik button:hover,
-    .st-key-btn_isotermal button:hover,
-    .st-key-btn_isotop button:hover {
+
+    /* Button Proses Termodinamika: oranye */
+    div[class*="st-key-btn_isobarik"] button,
+    div[class*="st-key-btn_isokhorik"] button,
+    div[class*="st-key-btn_isotermal"] button,
+    div[class*="st-key-btn_isotop"] button {
+        background: #ea580c !important;
+        box-shadow: 0 0 18px rgba(234,88,12,0.60) !important;
+    }
+
+    div[class*="st-key-btn_isobarik"] button:hover,
+    div[class*="st-key-btn_isokhorik"] button:hover,
+    div[class*="st-key-btn_isotermal"] button:hover,
+    div[class*="st-key-btn_isotop"] button:hover {
         background: #f97316 !important;
-        box-shadow: 0 0 28px rgba(249,115,22,0.85) !important;
+        box-shadow: 0 0 30px rgba(249,115,22,0.90) !important;
+        transform: translateY(-4px) scale(1.02) !important;
     }
     </style>
     """, unsafe_allow_html=True)
- 
+
     if st.button("⬅️ Kembali ke Menu Pengantar", key="back_to_slide1"):
         st.session_state.current_page = "slide1"
         st.rerun()
- 
+
     st.markdown("<div class='menu-title'>⚗️ Kategori Kalkulator Termodinamika  🌡️</div>", unsafe_allow_html=True)
- 
+
     col1, col2 = st.columns(2)
- 
+
     with col1:
         with st.container(key="card_energi"):
             st.markdown("<div class='card-title'>⚡ Energetika Dasar</div>", unsafe_allow_html=True)
- 
+
             c1, c2 = st.columns(2)
             with c1:
                 if st.button("🔸 Hukum 1 Termo", key="btn_h1"):
                     st.session_state.menu = "Hukum 1 Termodinamika"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
                 if st.button("🔸 Kalor", key="btn_kalor"):
                     st.session_state.menu = "Kalor"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
             with c2:
                 if st.button("🔸 Usaha", key="btn_usaha"):
                     st.session_state.menu = "Usaha"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
                 if st.button("🔸 Entropi", key="btn_entropi"):
                     st.session_state.menu = "Entropi"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
         st.write("")
- 
+
         with st.container(key="card_gas"):
             st.markdown("<div class='card-title'>🧬 Fisika Gas</div>", unsafe_allow_html=True)
- 
+
             c1, c2 = st.columns(2)
             with c1:
                 if st.button("🔸 Gas Ideal", key="btn_ideal"):
                     st.session_state.menu = "Gas Ideal"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
             with c2:
                 if st.button("🔸 Gas Nyata", key="btn_nyata"):
                     st.session_state.menu = "Gas Nyata"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
     with col2:
         with st.container(key="card_termo"):
             st.markdown("<div class='card-title'>🧪 Termokimia</div>", unsafe_allow_html=True)
- 
+
             c1, c2 = st.columns(2)
             with c1:
                 if st.button("🔸 Entalpi", key="btn_entalpi"):
                     st.session_state.menu = "Entalpi"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
                 if st.button("🔸 ΔH Reaksi", key="btn_dh_reaksi"):
                     st.session_state.menu = "ΔH Reaksi"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
             with c2:
                 if st.button("🔸 Hukum Hess", key="btn_hess"):
                     st.session_state.menu = "Hukum Hess"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
                 if st.button("🔸 Energi Gibbs", key="btn_gibbs"):
                     st.session_state.menu = "Energi Gibbs"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
         st.write("")
- 
+
         with st.container(key="card_proses"):
             st.markdown("<div class='card-title'>⚙️ Proses Termodinamika</div>", unsafe_allow_html=True)
- 
+
             c1, c2 = st.columns(2)
             with c1:
                 if st.button("🔸 Proses Isobarik", key="btn_isobarik"):
                     st.session_state.menu = "Proses Isobarik"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
                 if st.button("🔸 Proses Isotermal", key="btn_isotermal"):
                     st.session_state.menu = "Proses Isotermal"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
             with c2:
                 if st.button("🔸 Proses Isokhorik", key="btn_isokhorik"):
                     st.session_state.menu = "Proses Isokhorik"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
                 if st.button("🔸 Isotop Gas", key="btn_isotop"):
                     st.session_state.menu = "Edukasi Isotop Gas"
                     st.session_state.current_page = "calc_page"
                     st.rerun()
- 
+
 # PAGES: HALAMAN PERHITUNGAN AKTIF
 elif st.session_state.current_page == "calc_page":
     menu = st.session_state.menu
- 
+
     if st.button("⬅️ Kembali ke Pemilihan Modul"):
         st.session_state.current_page = "slide2"
         st.session_state.menu = None
         st.rerun()
- 
+
     st.header(f"⚗️ {menu}")
     st.divider()
- 
+
     # 1. HUKUM 1 TERMODINAMIKA
     if menu == "Hukum 1 Termodinamika":
         st.latex(r"\Delta U = Q - W")
         target = st.selectbox("Pilih variabel yang ingin dicari:",
                               ["ΔU (Perubahan Energi Dalam)", "Q (Kalor)", "W (Usaha)"])
- 
+
         # Tambahan Pengertian Dinamis
         if "ΔU" in target:
             st.info("💡 **Perubahan Energi Dalam (ΔU):** Jumlah total energi kinetik dan potensial yang dimiliki oleh partikel-partikel di dalam sistem. Dipengaruhi oleh kalor yang diserap/dilepas dan usaha yang dilakukan/diterima.")
@@ -516,11 +543,11 @@ elif st.session_state.current_page == "calc_page":
             st.info("💡 **Kalor (Q):** Energi panas yang berpindah antara sistem dan lingkungan karena adanya perbedaan suhu. Nilai (+) jika sistem menyerap kalor, (-) jika sistem melepas kalor.")
         else:
             st.info("💡 **Usaha (W):** Energi yang dipindahkan melalui gaya mekanis ketika sistem mengalami perubahan volume. Nilai (+) jika sistem melakukan usaha (ekspansi), (-) jika sistem menerima usaha (kompresi).")
- 
+
         Q = st.number_input("Q (kJ)", value=0.0) if target != "Q (Kalor)" else 0.0
         W = st.number_input("W (kJ)", value=0.0) if target != "W (Usaha)" else 0.0
         dU = st.number_input("ΔU (kJ)", value=0.0) if target != "ΔU (Perubahan Energi Dalam)" else 0.0
- 
+
         if st.button("Hitung"):
             st.balloons()
             if "ΔU" in target:
@@ -533,13 +560,13 @@ elif st.session_state.current_page == "calc_page":
                 hasil = Q - dU
                 langkah = f"W = Q - ΔU <br> W = {fmt(Q)} - {fmt(dU)} <br> W = <b>{fmt(hasil)} kJ</b>"
             st.markdown(f"<div class='result'><h3>Langkah Penyelesaian</h3>{langkah}</div>", unsafe_allow_html=True)
- 
+
     # 2. USAHA
     elif menu == "Usaha":
         st.latex(r"W = P \cdot \Delta V")
         target = st.selectbox("Pilih variabel yang ingin dicari:",
                               ["W (Usaha)", "P (Tekanan)", "ΔV (Perubahan Volume)"])
- 
+
         # Tambahan Pengertian Dinamis
         if "W" in target:
             st.info("💡 **Usaha Mekanis (W):** Kerja yang dilakukan oleh gas saat memuai (ekspansi) atau dilakukan pada gas saat menyusut (kompresi) di bawah tekanan tertentu.")
@@ -547,11 +574,11 @@ elif st.session_state.current_page == "calc_page":
             st.info("💡 **Tekanan (P):** Gaya tegak lurus yang diberikan oleh molekul gas per satuan luas dinding wadah sistem.")
         else:
             st.info("💡 **Perubahan Volume (ΔV):** Selisih antara volume akhir ($V_2$) dan volume awal ($V_1$) sistem gas ($\\Delta V = V_2 - V_1$).")
- 
+
         W = st.number_input("W (J)", value=0.0) if target != "W (Usaha)" else 0.0
         P = st.number_input("P (Pa)", value=0.0) if target != "P (Tekanan)" else 0.0
         dV = st.number_input("ΔV (m³)", value=0.0) if target != "ΔV (Perubahan Volume)" else 0.0
- 
+
         if st.button("Hitung"):
             st.balloons()
             if "W" in target:
@@ -564,13 +591,13 @@ elif st.session_state.current_page == "calc_page":
                 hasil = W / P if P != 0 else 0
                 langkah = f"ΔV = W / P <br> ΔV = {fmt(W)} / {fmt(P)} <br> ΔV = <b>{fmt(hasil)} m³</b>"
             st.markdown(f"<div class='result'><h3>Langkah Penyelesaian</h3>{langkah}</div>", unsafe_allow_html=True)
- 
+
     # 3. KALOR
     elif menu == "Kalor":
         st.latex(r"Q = m \cdot c \cdot \Delta T")
         target = st.selectbox("Pilih variabel yang ingin dicari:",
                               ["Q (Kalor)", "m (Massa)", "c (Kalor Jenis)", "ΔT (Perubahan Suhu)"])
- 
+
         # Tambahan Pengertian Dinamis
         if "Q" in target:
             st.info("💡 **Kalor (Q):** Energi panas total yang diserap atau dilepaskan oleh suatu benda bermassa untuk mengubah suhunya.")
@@ -580,12 +607,12 @@ elif st.session_state.current_page == "calc_page":
             st.info("💡 **Kalor Jenis (c):** Banyaknya kalor yang diperlukan oleh 1 gram zat untuk menaikkan suhunya sebesar 1°C atau 1 K. Ini menunjukkan karakteristik termal zat tersebut.")
         else:
             st.info("💡 **Perubahan Suhu (ΔT):** Selisih antara suhu akhir ($T_{akhir}$) dan suhu awal ($T_{awal}$) dari zat.")
- 
+
         Q = st.number_input("Q (J)", value=0.0) if target != "Q (Kalor)" else 0.0
         m = st.number_input("m (g)", value=0.0) if target != "m (Massa)" else 0.0
         c = st.number_input("c (J/g°C)", value=0.0) if target != "c (Kalor Jenis)" else 0.0
         dT = st.number_input("ΔT (K atau °C)", value=0.0) if target != "ΔT (Perubahan Suhu)" else 0.0
- 
+
         if st.button("Hitung"):
             st.balloons()
             if "Q" in target:
@@ -601,14 +628,14 @@ elif st.session_state.current_page == "calc_page":
                 hasil = Q / (m * c) if (m * c) != 0 else 0
                 langkah = f"ΔT = Q / (m × c) <br> ΔT = {fmt(Q)} / ({fmt(m)} × {fmt(c)}) <br> ΔT = <b>{fmt(hasil)} K</b>"
             st.markdown(f"<div class='result'><h3>Langkah Penyelesaian</h3>{langkah}</div>", unsafe_allow_html=True)
- 
+
     # 4. ENTALPI
     elif menu == "Entalpi":
         st.latex(r"\Delta H = \Delta U + \Delta n \cdot R \cdot T")
         target = st.selectbox("Pilih variabel yang ingin dicari:",
                               ["ΔH (Entalpi)", "ΔU (Energi Dalam)", "Δn (Perubahan Mol)", "T (Suhu)"])
         R = 0.008314
- 
+
         # Tambahan Pengertian Dinamis
         if "ΔH" in target:
             st.info("💡 **Perubahan Entalpi (ΔH):** Jumlah energi atau kalor total yang dilepas atau diserap sistem pada kondisi tekanan konstan.")
@@ -618,12 +645,12 @@ elif st.session_state.current_page == "calc_page":
             st.info("💡 **Perubahan Jumlah Mol Gas (Δn):** Selisih jumlah mol produk berwujud gas dengan jumlah mol reaktan berwujud gas ($\\Delta n = n_{produk} - n_{reaktan}$).")
         else:
             st.info("💡 **Suhu Mutlak (T):** Suhu operasi sistem termodinamika yang wajib dinyatakan dalam satuan Kelvin (K).")
- 
+
         dH = st.number_input("ΔH (kJ)", value=0.0) if target != "ΔH (Entalpi)" else 0.0
         dU = st.number_input("ΔU (kJ)", value=0.0) if target != "ΔU (Energi Dalam)" else 0.0
         dn = st.number_input("Δn (mol)", value=0.0) if target != "Δn (Perubahan Mol)" else 0.0
         T = st.number_input("T (K)", value=0.0) if target != "T (Suhu)" else 0.0
- 
+
         if st.button("Hitung"):
             st.balloons()
             if "ΔH" in target:
@@ -639,18 +666,18 @@ elif st.session_state.current_page == "calc_page":
                 hasil = (dH - dU) / (dn * R) if dn != 0 else 0
                 langkah = f"T = (ΔH - ΔU) / (Δn × R) <br> T = ({fmt(dH)} - {fmt(dU)}) / ({fmt(dn)} × {R}) <br> T = <b>{fmt(hasil)} K</b>"
             st.markdown(f"<div class='result'><h3>Langkah Penyelesaian</h3>{langkah}</div>", unsafe_allow_html=True)
- 
+
     # 5. HUKUM HESS
     elif menu == "Hukum Hess":
         st.latex(r"\Delta H_{total} = \Delta H_1 + \Delta H_2 + ... + \Delta H_n")
         target = st.selectbox("Pilih operasi:", ["Hitung ΔH Total dari list", "Cari satu ΔH yang hilang"])
- 
+
         # Tambahan Pengertian Dinamis
         if "Total" in target:
             st.info("💡 **Hukum Hess:** Menyatakan bahwa perubahan entalpi total dari suatu reaksi kimia bernilai sama, baik reaksi itu berlangsung dalam satu tahap maupun beberapa tahap (tidak bergantung pada jalannya reaksi, hanya kondisi awal dan akhir).")
         else:
             st.info("💡 **Mencari Komponen ΔH:** Jika total entalpi rute langsung diketahui, kita bisa mencari nilai entalpi salah satu sub-reaksi yang hilang dengan prinsip hukum penjumlahan.")
- 
+
         if target == "Hitung ΔH Total dari list":
             data = st.text_input("Masukkan semua nilai ΔH (pisahkan dengan koma)", "10,-20,30")
             if st.button("Hitung"):
@@ -668,12 +695,12 @@ elif st.session_state.current_page == "calc_page":
                 st.markdown(
                     f"<div class='result'><h3>Hasil</h3>ΔH_x = {fmt(total_h)} - {fmt(sum(arr))} <br> ΔH_x = <b>{fmt(hasil)} kJ</b></div>",
                     unsafe_allow_html=True)
- 
+
     # 6. ΔH REAKSI
     elif menu == "ΔH Reaksi":
         st.latex(r"\Delta H = \sum Hf_{produk} - \sum Hf_{reaktan}")
         target = st.selectbox("Pilih variabel yang ingin dicari:", ["ΔH Reaksi", "ΣHf Produk", "ΣHf Reaktan"])
- 
+
         # Tambahan Pengertian Dinamis
         if "ΔH Reaksi" in target:
             st.info("💡 **ΔH Reaksi:** Kalor netto reaksi yang dihitung dari total entalpi pembentukan standar ($H_f^\\circ$) zat-zat produk dikurangi zat-zat reaktan.")
@@ -681,16 +708,16 @@ elif st.session_state.current_page == "calc_page":
             st.info("💡 **ΣHf Produk:** Total energi entalpi pembentukan standar milik seluruh senyawa baru hasil akhir reaksi (sisi kanan panah).")
         else:
             st.info("💡 **ΣHf Reaktan:** Total energi entalpi pembentukan standar milik seluruh senyawa awal / pereaksi (sisi kiri panah).")
- 
+
         dH = st.number_input("ΔH Reaksi (kJ)", value=0.0) if target != "ΔH Reaksi" else 0.0
         prod = st.text_input("Masukkan nilai Produk (pisah koma)", "0") if target != "ΣHf Produk" else "0"
         reak = st.text_input("Masukkan nilai Reaktan (pisah koma)", "0") if target != "ΣHf Reaktan" else "0"
- 
+
         if st.button("Hitung"):
             st.balloons()
             p_sum = sum([float(x) for x in prod.split(",") if x.strip() != ""])
             r_sum = sum([float(x) for x in reak.split(",") if x.strip() != ""])
- 
+
             if target == "ΔH Reaksi":
                 hasil = p_sum - r_sum
                 langkah = f"ΔH = {fmt(p_sum)} - {fmt(r_sum)} = <b>{fmt(hasil)} kJ/mol</b>"
@@ -701,13 +728,13 @@ elif st.session_state.current_page == "calc_page":
                 hasil = p_sum - dH
                 langkah = f"ΣHf_reaktan = {fmt(p_sum)} - {fmt(dH)} = <b>{fmt(hasil)} kJ/mol</b>"
             st.markdown(f"<div class='result'><h3>Langkah Penyelesaian</h3>{langkah}</div>", unsafe_allow_html=True)
- 
+
     # 7. ENERGI GIBBS
     elif menu == "Energi Gibbs":
         st.latex(r"\Delta G = \Delta H - T \cdot \Delta S")
         target = st.selectbox("Pilih variabel yang ingin dicari:",
                               ["ΔG (Energi Gibbs)", "ΔH (Entalpi)", "T (Suhu dalam K)", "ΔS (Entropi dalam kJ/K)"])
- 
+
         # Tambahan Pengertian Dinamis
         if "ΔG" in target:
             st.info("💡 **Energi Bebas Gibbs (ΔG):** Parameter potensial termodinamika untuk memprediksi kespontanan reaksi. Reaksi berjalan spontan jika $\\Delta G < 0$, tidak spontan jika $\\Delta G > 0$, dan setimbang jika $\\Delta G = 0$.")
@@ -717,12 +744,12 @@ elif st.session_state.current_page == "calc_page":
             st.info("💡 **Suhu (T):** Faktor pengali termal derajat ketidakteraturan (Kelvin).")
         else:
             st.info("💡 **Perubahan Entropi (ΔS):** Ukuran derajat ketidakteraturan atau keacakan partikel dalam sistem.")
- 
+
         dG = st.number_input("ΔG (kJ)", value=0.0) if target != "ΔG (Energi Gibbs)" else 0.0
         dH = st.number_input("ΔH (kJ)", value=0.0) if target != "ΔH (Entalpi)" else 0.0
         T = st.number_input("T (K)", value=0.0) if target != "T (Suhu dalam K)" else 0.0
         dS = st.number_input("ΔS (kJ/K)", value=0.0) if target != "ΔS (Entropi dalam kJ/K)" else 0.0
- 
+
         if st.button("Hitung"):
             st.balloons()
             if "ΔG" in target:
@@ -738,12 +765,12 @@ elif st.session_state.current_page == "calc_page":
                 hasil = (dH - dG) / T if T != 0 else 0
                 langkah = f"ΔS = ({fmt(dH)} - {fmt(dG)}) / {fmt(T)} = <b>{fmt(hasil)} kJ/K</b>"
             st.markdown(f"<div class='result'><h3>Langkah Penyelesaian</h3>{langkah}</div>", unsafe_allow_html=True)
- 
+
     # 8. ENTROPI
     elif menu == "Entropi":
         st.latex(r"\Delta S = \frac{Q}{T}")
         target = st.selectbox("Pilih variabel yang ingin dicari:", ["ΔS (Entropi)", "Q (Kalor)", "T (Suhu)"])
- 
+
         # Tambahan Pengertian Dinamis
         if "ΔS" in target:
             st.info("💡 **Perubahan Entropi (ΔS):** Rasio perpindahan kalor reversibel sistem terhadap suhu mutlaknya, mendefinisikan tingkat penyebaran energi atau ketidakteraturan molekul.")
@@ -751,11 +778,11 @@ elif st.session_state.current_page == "calc_page":
             st.info("💡 **Kalor Reversibel (Q):** Energi termal yang ditransfer masuk/keluar sistem secara perlahan sehingga sistem selalu berada pada kesetimbangan konstan.")
         else:
             st.info("💡 **Suhu Mutlak (T):** Titik temperatur konstan (Kelvin) lingkungan tempat pertukaran energi entropi berlangsung.")
- 
+
         dS = st.number_input("ΔS (kJ/K)", value=0.0) if target != "ΔS (Entropi)" else 0.0
         Q = st.number_input("Q (kJ)", value=0.0) if target != "Q (Kalor)" else 0.0
         T = st.number_input("T (K)", value=0.0) if target != "T (Suhu)" else 0.0
- 
+
         if st.button("Hitung"):
             st.balloons()
             if "ΔS" in target:
@@ -768,14 +795,14 @@ elif st.session_state.current_page == "calc_page":
                 hasil = Q / dS if dS != 0 else 0
                 langkah = f"T = {fmt(Q)} / {fmt(dS)} = <b>{fmt(hasil)} K</b>"
             st.markdown(f"<div class='result'><h3>Langkah Penyelesaian</h3>{langkah}</div>", unsafe_allow_html=True)
- 
+
     # 9. GAS IDEAL
     elif menu == "Gas Ideal":
         st.latex(r"P \cdot V = n \cdot R \cdot T")
         target = st.selectbox("Pilih variabel yang ingin dicari:",
                               ["P (Tekanan)", "V (Volume)", "n (Jumlah Mol)", "T (Suhu)"])
         R = 0.0821
- 
+
         # Tambahan Pengertian Dinamis
         if "P" in target:
             st.info("💡 **Tekanan Gas Ideal (P):** Gaya makroskopis tumbukan partikel gas teoritis pada dinding wadah yang kerapatan volumenya diabaikan dan interaksi antarpartikelnya nol.")
@@ -785,12 +812,12 @@ elif st.session_state.current_page == "calc_page":
             st.info("💡 **Jumlah Mol (n):** Ukuran kuantitas zat yang menyatakan jumlah partikel gas dalam satuan mol.")
         else:
             st.info("💡 **Suhu Mutlak (T):** Derajat panas kinetik partikel dalam derajat Kelvin ($K = ^\\circ C + 273$).")
- 
+
         P = st.number_input("P (atm)", value=0.0) if target != "P (Tekanan)" else 0.0
         V = st.number_input("V (L)", value=0.0) if target != "V (Volume)" else 0.0
         n = st.number_input("n (mol)", value=0.0) if target != "n (Jumlah Mol)" else 0.0
         T = st.number_input("T (K)", value=0.0) if target != "T (Suhu)" else 0.0
- 
+
         if st.button("Hitung"):
             st.balloons()
             if "P" in target:
@@ -806,27 +833,27 @@ elif st.session_state.current_page == "calc_page":
                 hasil = (P * V) / (n * R) if n != 0 else 0
                 langkah = f"T = ({fmt(P)} × {fmt(V)}) / ({fmt(n)} × {R}) = <b>{fmt(hasil)} K</b>"
             st.markdown(f"<div class='result'><h3>Langkah Penyelesaian</h3>{langkah}</div>", unsafe_allow_html=True)
- 
+
     # 10. GAS NYATA
     elif menu == "Gas Nyata":
         st.latex(r"\left(P + \frac{an^2}{V^2}\right)(V - nb) = nRT")
         target = st.selectbox("Pilih variabel yang ingin dicari:", ["P (Tekanan)", "T (Suhu)"])
         R = 0.0821
- 
+
         # Tambahan Pengertian Dinamis
         if "P" in target:
             st.info("💡 **Tekanan Gas Nyata (Persamaan Van der Waals):** Menghitung koreksi tekanan akibat adanya gaya tarik-menarik antar-molekul gas ($a$) dan volume eksklusi efektif partikel gas nyata itu sendiri ($b$).")
         else:
             st.info("💡 **Suhu Gas Nyata:** Suhu sistem non-ideal yang dipengaruhi oleh koreksi kerapatan internal dan volume aktual molekuler.")
- 
+
         n = st.number_input("n (mol)", value=0.0)
         V = st.number_input("V (L)", value=0.0)
         a = st.number_input("a (atm.L²/mol²)", value=0.0)
         b = st.number_input("b (L/mol)", value=0.0)
- 
+
         P = st.number_input("P (atm)", value=0.0) if target != "P (Tekanan)" else 0.0
         T = st.number_input("T (K)", value=0.0) if target != "T (Suhu)" else 0.0
- 
+
         if st.button("Hitung"):
             st.balloons()
             if "P" in target:
@@ -838,7 +865,7 @@ elif st.session_state.current_page == "calc_page":
                 hasil = (p_term * v_term) / (n * R) if (n * R) != 0 else 0
                 langkah = f"T = [({fmt(P)} + {a}×{fmt(n)}²/{fmt(V)}²) × ({fmt(V)} - {fmt(n)}×{b})] / ({fmt(n)} × {R}) <br> T = <b>{fmt(hasil)} K</b>"
             st.markdown(f"<div class='result'><h3>Langkah Penyelesaian</h3>{langkah}</div>", unsafe_allow_html=True)
- 
+
     # 11. PROSES ISOBARIK
     elif menu == "Proses Isobarik":
         st.latex(r"W = P \cdot (V_2 - V_1), \quad Q = n \cdot C_p \cdot \Delta T")
@@ -850,7 +877,7 @@ elif st.session_state.current_page == "calc_page":
             st.info("💡 **Usaha Isobarik (W):** Kerja mekanis yang dilakukan oleh gas atau pada gas ketika sistem memuai/menyusut pada tekanan konstan (tetap).")
         else:
             st.info("💡 **Kalor Isobarik (Q):** Energi panas yang diserap atau dilepas sistem pada tekanan konstan, di mana nilai kapasitas kalornya menggunakan $C_p$.")
- 
+
         P = st.number_input("P (Pa atau atm)", value=0.0)
         V1 = st.number_input("V1 (m³ atau L)", value=0.0)
         V2 = st.number_input("V2 (m³ atau L)", value=0.0)
@@ -859,7 +886,7 @@ elif st.session_state.current_page == "calc_page":
             st.markdown(
                 f"<div class='result'>W = {fmt(P)} × ({fmt(V2)} - {fmt(V1)}) = <b>{fmt(hasil)} Joule/Liter-atm</b></div>",
                 unsafe_allow_html=True)
- 
+
     # 12. PROSES ISOKHORIK
     elif menu == "Proses Isokhorik":
         st.latex(r"W = 0, \quad \Delta U = Q = n \cdot C_v \cdot \Delta T")
@@ -874,7 +901,7 @@ elif st.session_state.current_page == "calc_page":
             st.markdown(
                 f"<div class='result'>W = 0 <br> Q = ΔU = {fmt(n)} × {fmt(Cv)} × {fmt(dT)} = <b>{fmt(hasil)} Joule</b></div>",
                 unsafe_allow_html=True)
- 
+
     # 13. PROSES ISOTERMAL
     elif menu == "Proses Isotermal":
         st.latex(r"W = Q = n \cdot R \cdot T \cdot \ln\left(\frac{V_2}{V_1}\right)")
@@ -888,7 +915,7 @@ elif st.session_state.current_page == "calc_page":
         V2 = st.number_input("V2 (L atau m³)", value=1.0)
         if st.button("Hitung Kerja Isotermal"):
             import math
- 
+
             if V1 != 0 and V2 / V1 > 0:
                 hasil = n * R * T * math.log(V2 / V1)
                 st.markdown(
@@ -896,23 +923,23 @@ elif st.session_state.current_page == "calc_page":
                     unsafe_allow_html=True)
             else:
                 st.error("Volume tidak valid untuk rasio logaritma alami.")
- 
+
     # 14. EDUKASI ISOTOP GAS
     elif menu == "Edukasi Isotop Gas":
         st.markdown("""
         ### 🧪 Efek Isotop pada Sifat Termodinamika Gas
         Penggantian unsur dengan isotopnya yang lebih berat (misal $H_2 \\rightarrow D_2$) akan mengubah sifat fisis makro zat tanpa mengganggu struktur konfigurasi elektron luarnya.
- 
+
         #### Poin Teoretis Utama:
         1. **Kecepatan Efektif ($v_{rms}$):** Berbanding terbalik dengan akar massa molar ($M$). Partikel isotop berat bergerak lebih lambat pada kesetimbangan termal yang sama.
         """)
- 
+
         st.latex(r"v_{rms} = \sqrt{\frac{3RT}{M}}")
- 
+
         st.markdown("""
         2. **Pergeseran Kapasitas Kalor:** Perubahan massa merubah momen inersia molekul serta tingkat energi vibrasi kuantumnya.
         """)
- 
+
         st.write("")
         st.subheader("📊 Komputasi Nilai Efektif ($v_{rms}$) antar Isotop")
         
@@ -927,9 +954,9 @@ elif st.session_state.current_page == "calc_page":
             st.info("💡 **Isotop Uranium:** Perbedaan massa antara $^{235}UF_6$ dan $^{238}UF_6$ sangat kecil. Fraksionasi kinetik yang tipis inilah yang mendasari metode pemisahan membran/sentrifugasi gas pada pengayaan uranium nuklir.")
         else:
             st.info("💡 **Isotop Uap Air:** Uap air berat ($D_2O$) memiliki interaksi energi ikatan antar-molekul yang sedikit berbeda dari uap air biasa ($H_2O$), memengaruhi tekanan uap jenuh dan entalpi penguapannya.")
- 
+
         T_isotop = st.number_input("Suhu Sistem (K)", value=300.0, min_value=0.1)
- 
+
         if pilihan_gas == "Hidrogen (H₂ vs D₂)":
             label_1, M1 = "Hidrogen Biasa ($H_2$)", 0.002016
             label_2, M2 = "Deuterium ($D_2$)", 0.004028
@@ -939,24 +966,23 @@ elif st.session_state.current_page == "calc_page":
         else:
             label_1, M1 = "Uap Air Biasa ($H_2O$)", 0.018015
             label_2, M2 = "Uap Air Berat ($D_2O$)", 0.020027
- 
+
         if st.button("Hitung Rasio Kecepatan"):
             import math
- 
+
             R = 8.314
             v1 = math.sqrt((3 * R * T_isotop) / M1)
             v2 = math.sqrt((3 * R * T_isotop) / M2)
             rasio = v1 / v2
- 
+
             st.markdown(f"### 📊 Hasil Simulasi Presentasi ({fmt(T_isotop)} K):")
- 
+
             with st.container(border=True):
                 st.markdown(f"""
                 * **{label_1}** ($M$ = {fmt(M1 * 1000)} g/mol) $\\rightarrow$ $v_{{rms}}$ = **{fmt(v1)} m/s**
                 * **{label_2}** ($M$ = {fmt(M2 * 1000)} g/mol) $\\rightarrow$ $v_{{rms}}$ = **{fmt(v2)} m/s**
- 
+
                 ---
- 
+
                 📌 **Kesimpulan Analisis:** Senyawa gas ringan ({label_1}) berdifusi **{fmt(rasio)} kali lebih cepat** dibanding isotop beratnya. Perbedaan properti kinetik gas akibat fraksionasi isotop termodinamika ini diaplikasikan langsung pada teknologi pemisahan membran nuklir.
                 """)
-                
