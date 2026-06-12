@@ -86,14 +86,15 @@ html, body, [class*="css"] {
     font-size:16px !important;
     border:none !important;
     color:white !important;
-    background: linear-gradient(135deg, #7c3aed, #d946ef) !important;
-    box-shadow:0 0 18px rgba(217, 70, 239, 0.5) !important;
+    background: #7c3aed !important;
+    box-shadow:0 0 18px rgba(124, 58, 237, 0.55) !important;
     transition:all .3s ease !important;
 }
 
 .stButton>button:hover, div[data-testid="stButton"]>button:hover {
-    transform:translateY(-6px) scale(1.02) !important;
-    box-shadow:0 0 30px rgba(217, 70, 239, 0.9) !important;
+    transform:translateY(-4px) scale(1.02) !important;
+    background: #8b5cf6 !important;
+    box-shadow:0 0 25px rgba(124,58,237,0.85) !important;
 }
 
 .stNumberInput input, .stTextInput input {
@@ -220,6 +221,20 @@ if st.session_state.current_page == "slide1":
 
     st.write("")
 
+    # CREATOR DI BAGIAN BAWAH SLIDE 1
+    st.markdown("""
+    <div style="
+        text-align:center;
+        color:#94a3b8;
+        font-size:14px;
+        margin-top:20px;
+        margin-bottom:15px;
+        white-space: nowrap;
+    ">
+    👨‍💻 Creator: Diki Fadillah R | Fajri Ash Shidqi B | Farrel Admaja W | M Daffa Islami | Reva Nur Lestari
+    </div>
+    """, unsafe_allow_html=True)
+
     _, col_btn, _ = st.columns([1,2,1])
 
     with col_btn:
@@ -243,36 +258,30 @@ elif st.session_state.current_page == "slide2":
         text-shadow: 0 0 18px rgba(147,197,253,0.7);
     }
 
-    .st-key-card_energi {
-        background: linear-gradient(135deg, rgba(59,130,246,0.28), rgba(168,85,247,0.22));
-        border: 1px solid rgba(147,197,253,0.35);
-        border-radius: 24px;
-        padding: 24px;
-        box-shadow: 0 0 25px rgba(59,130,246,0.25);
-    }
-
-    .st-key-card_termo {
-        background: linear-gradient(135deg, rgba(236,72,153,0.25), rgba(249,115,22,0.20));
-        border: 1px solid rgba(244,114,182,0.35);
-        border-radius: 24px;
-        padding: 24px;
-        box-shadow: 0 0 25px rgba(236,72,153,0.25);
-    }
-
-    .st-key-card_gas {
-        background: linear-gradient(135deg, rgba(20,184,166,0.25), rgba(56,189,248,0.20));
-        border: 1px solid rgba(45,212,191,0.35);
-        border-radius: 24px;
-        padding: 24px;
-        box-shadow: 0 0 25px rgba(20,184,166,0.25);
-    }
-
+    /* Container kategori dibuat seragam */
+    .st-key-card_energi,
+    .st-key-card_termo,
+    .st-key-card_gas,
     .st-key-card_proses {
-        background: linear-gradient(135deg, rgba(139,92,246,0.25), rgba(34,197,94,0.18));
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(15px);
         border: 1px solid rgba(167,139,250,0.35);
         border-radius: 24px;
         padding: 24px;
-        box-shadow: 0 0 25px rgba(139,92,246,0.25);
+        min-height: 280px;
+        box-shadow: 0 0 25px rgba(124,58,237,0.25);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .st-key-card_energi:hover,
+    .st-key-card_termo:hover,
+    .st-key-card_gas:hover,
+    .st-key-card_proses:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 35px rgba(124,58,237,0.40);
+        transition: all 0.3s ease;
     }
     </style>
     """, unsafe_allow_html=True)
