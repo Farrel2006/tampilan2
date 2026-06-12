@@ -155,11 +155,13 @@ menu_list = [
     "ΔH Reaksi", "Energi Gibbs", "Entropi", "Gas Ideal", "Gas Nyata",
     "Proses Isobarik", "Proses Isokhorik", "Proses Isotermal", "Edukasi Isotop Gas"
 ]
+# =====================================
 # SLIDE 1: JUDUL, SAMBUTAN & TUJUAN
+# =====================================
 if st.session_state.current_page == "slide1":
- 
+
     st.snow()
- 
+
     # CSS KHUSUS JUDUL
     st.markdown("""
     <style>
@@ -180,14 +182,14 @@ if st.session_state.current_page == "slide1":
         -webkit-text-fill-color: transparent;
         animation: gradientFlow 6s linear infinite;
     }
- 
+
     @keyframes gradientFlow {
         from {background-position:0% center;}
         to {background-position:400% center;}
     }
     </style>
     """, unsafe_allow_html=True)
- 
+
     # JUDUL
     st.markdown("""
     <div style="text-align:center;">
@@ -196,52 +198,63 @@ if st.session_state.current_page == "slide1":
         <span style="font-size:70px;">🌡️</span>
     </div>
     """, unsafe_allow_html=True)
- 
+
     st.markdown(
         "<div class='subtitle'>Kalkulator & Modul Edukasi Termodinamika Universal</div>",
         unsafe_allow_html=True
     )
- 
+
     st.write("")
- 
+
     # BOX PENJELASAN
     with st.container(border=True):
         st.markdown("""
         ### 🎯 Selamat Datang di ThermoCalculator!
-        
-        **ThermoCalculator** adalah platform komputasi termodinamika interaktif yang jadi "asisten" andalan buat mahasiswa, akademisi, sampai praktisi. Alat ini dibuat khusus untuk memangkas waktu pengerjaan analisis energi, perhitungan gas, hingga reaksi kimia dengan hasil yang akurat.
-        
+
+        **ThermoCalculator** adalah platform komputasi termodinamika interaktif yang menjadi
+        asisten bagi mahasiswa, akademisi, dan praktisi dalam menyelesaikan perhitungan
+        termodinamika secara cepat, sistematis, dan akurat.
+
         ---
-        
+
         ### 🚀 Tujuan & Kegunaan Aplikasi
-        
-        1. **Hitung Instan & Otomatis** : Hemat waktu Anda dengan otomatisasi pencarian variabel termodinamika, tanpa perlu repot memanipulasi rumus manual yang rumit.
-        2. **Validasi Hasil Studi & Lab** : Validasi data hasil praktikum Anda secara akurat, mulai dari perhitungan entalpi reaktan/produk, kalor gas, hingga Hukum Hess.
-        3. **Pahami Konsep, Bukan Cuma Hasil** : Dukung proses belajar Anda lewat fitur penurunan rumus langkah demi langkah (*step-by-step*) untuk pemahaman konseptual yang lebih mendalam.
+
+        **1. Hitung Instan & Otomatis**  
+        Mengotomatisasi perhitungan variabel termodinamika sehingga proses penyelesaian
+        soal menjadi lebih cepat dan efisien.
+
+        **2. Validasi Data Praktikum**  
+        Membantu memverifikasi hasil eksperimen dan perhitungan laboratorium, seperti
+        kalor, entalpi, energi dalam, dan hukum termodinamika lainnya.
+
+        **3. Pembelajaran Interaktif**  
+        Menampilkan langkah penyelesaian secara sistematis agar pengguna tidak hanya
+        memperoleh hasil akhir, tetapi juga memahami konsep perhitungannya.
         """)
- 
+
     st.write("")
- 
-    # CREATOR DI BAGIAN BAWAH SLIDE 1
+
+    # CREATOR
     st.markdown("""
     <div style="
         text-align:center;
         color:#94a3b8;
         font-size:14px;
         margin-top:20px;
-        margin-bottom:15px;
-        white-space: nowrap;
+        margin-bottom:20px;
     ">
     👨‍💻 Creator: Diki Fadillah R | Fajri Ash Shidqi B | Farrel Admaja W | M Daffa Islami | Reva Nur Lestari
     </div>
     """, unsafe_allow_html=True)
- 
-    _, col_btn, _ = st.columns([1,2,1])
- 
-    with col_btn:
+
+    # BUTTON TENGAH SETELAH CREATOR
+    col1, col2, col3 = st.columns([1.5, 2, 1.5])
+
+    with col2:
         if st.button(
             "🚀 Lanjut ke Pemilihan Modul",
-            key="next_to_slide2"
+            key="next_to_slide2",
+            use_container_width=True
         ):
             st.session_state.current_page = "slide2"
             st.rerun()
